@@ -9,13 +9,13 @@
 #' @return vec dodged to avoid overlap
 #' @export
 #'
-ggdodge_custom_dodge_amount <- function(vec, pointsize) {
+ggdodge_custom_dodge_amount <- function(vec, pointsize, spacing = 1) {
 
   dist_from_prev_point <- c(Inf, tail(vec, n=-1) - head(vec, n=-1))
   #browser()
   y_add = ifelse(
     dist_from_prev_point < ggplot2:::.pt * pointsize,
-    yes = 1,
+    yes = spacing,
     no = 0
   )
 
